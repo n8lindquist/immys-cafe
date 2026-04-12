@@ -1,0 +1,55 @@
+---
+layout: base.njk
+ogType: article
+---
+
+{% block head %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Recipe",
+  "name": "{{ title }}",
+  "author": {
+    "@type": "Person",
+    "name": "N8 Lindquist"
+  },
+  "description": "{{ description }}",
+  "image": "https://cafeimmy.com/assets/images/recipes/{{ slug }}.jpg",
+  "prepTime": "{{ schemaPrepTime | default('PT15M') }}",
+  "cookTime": "{{ schemaCookTime | default('PT6H') }}",
+  "totalTime": "{{ schemaTotalTime | default('PT6H15M') }}",
+  "recipeYield": "{{ servings }} servings",
+  "recipeCategory": "Dinner",
+  "recipeCuisine": "{{ cuisine | default('American') }}",
+  "keywords": "{{ keywords | default(title) }}",
+  "recipeIngredient": [
+    {% for ingredient in recipeIngredient %}"{{ ingredient }}"{% if not loop.last %},
+    {% endif %}{% endfor %}
+  ],
+  "recipeInstructions": [
+    {% for step in recipeInstructions %}{
+      "@type": "HowToStep",
+      "text": "{{ step }}"
+    }{% if not loop.last %},
+    {% endif %}{% endfor %}
+  ]
+}
+</script>
+{% endblock %}
+
+<article class="recipe-page">
+  <h1>{{ title }}</h1>
+
+  <div class="recipe-meta-bar">
+    {% if prepTime %}<div class="meta-item"><span class="meta-label">Prep</span> {{ prepTime }}</div>{% endif %}
+    {% if cookTime %}<div class="meta-item"><span class="meta-label">Cook</span> {{ cookTime }}</div>{% endif %}
+    {% if servings %}<div class="meta-item"><span class="meta-label">Servings</span> {{ servings }}</div>{% endif %}
+    {% if category %}<div class="meta-item"><span class="meta-label">Category</span> {{ category }}</div>{% endif %}
+  </div>
+
+  {% if description %}
+  <p class="recipe-description">{{ description }}</p>
+  {% endif %}
+
+  {{ content | safe }}
+</article>

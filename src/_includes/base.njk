@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ pageTitle | default("Immy's Cafe — Simple Recipes for Real Life") }}</title>
+  <meta name="description" content="{{ pageDescription | default("Simple recipes you actually want to eat. No fuss, no fluff — just real food for real life.") }}">
+  <meta property="og:title" content="{{ ogTitle | default(pageTitle) | default("Immy's Cafe — Simple Recipes for Real Life") }}">
+  <meta property="og:description" content="{{ ogDescription | default(pageDescription) | default("Real recipes for real life. No fuss, no fluff — just good food.") }}">
+  <meta property="og:url" content="https://cafeimmy.com{{ page.url }}">
+  <meta property="og:type" content="{{ ogType | default("website") }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://cafeimmy.com{{ page.url }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  {% block head %}{% endblock %}
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="logo">
+        <img src="/assets/images/logo.png" alt="Immy's Cafe" class="logo-img">
+      </a>
+      <nav class="nav-menu">
+        <a href="/recipes/">Recipes</a>
+        <a href="/categories/chicken">Chicken</a>
+        <a href="/categories/beef">Beef</a>
+        <a href="/categories/seafood">Seafood</a>
+        <a href="/about">About</a>
+      </nav>
+      <button class="mobile-nav-toggle" aria-label="Open menu">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
+      </button>
+    </div>
+  </header>
+
+  {{ content | safe }}
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">Immy's <span>Cafe</span></div>
+      <div class="footer-links">
+        <a href="/recipes/">Recipes</a>
+        <a href="/about">About</a>
+        <a href="https://www.instagram.com/cafeimmy" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.pinterest.com/cafeimmy" target="_blank" rel="noopener">Pinterest</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Immy's Cafe. Made in Salt Lake City.</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.js"></script>
+</body>
+</html>

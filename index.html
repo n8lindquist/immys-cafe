@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Immy's Cafe — Slow Cooker Freezer Meals, Done Right</title>
-  <meta name="description" content="Simple freezer meals you actually want to eat. Prep once, dump in the slow cooker, eat all week. No subscriptions, no boxes — just real recipes.">
-  <meta property="og:title" content="Immy's Cafe — Slow Cooker Freezer Meals">
-  <meta property="og:description" content="Prep once, eat all week. Simple freezer meals for real life.">
+  <title>Immy's Cafe — Simple Recipes for Real Life</title>
+  <meta name="description" content="Simple recipes you actually want to eat. No fuss, no fluff — just real food for real life.">
+  <meta property="og:title" content="Immy's Cafe — Simple Recipes for Real Life">
+  <meta property="og:description" content="Real recipes for real life. No fuss, no fluff — just good food.">
   <meta property="og:url" content="https://cafeimmy.com">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
@@ -175,12 +175,32 @@
       border: none;
       cursor: pointer;
       padding: var(--space-sm);
+      z-index: 101;
     }
 
     .mobile-nav-toggle svg {
       width: 24px;
       height: 24px;
       color: var(--charcoal);
+    }
+
+    .nav-menu.is-open {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--warm-white);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-xl);
+    }
+
+    .nav-menu.is-open a {
+      font-size: 1.3rem;
     }
 
     /* ---- Hero ---- */
@@ -1022,7 +1042,7 @@
         grid-template-columns: 1fr;
       }
 
-      nav { display: none; }
+      .nav-menu:not(.is-open) { display: none; }
 
       .mobile-nav-toggle { display: block; }
 
@@ -1054,7 +1074,7 @@
       <a href="/" class="logo">
         <img src="/assets/images/logo.png" alt="Immy's Cafe" class="logo-img">
       </a>
-      <nav>
+      <nav class="nav-menu">
         <a href="/recipes/">Recipes</a>
         <a href="/categories/chicken">Chicken</a>
         <a href="/categories/beef">Beef</a>
@@ -1070,12 +1090,12 @@
   <!-- Hero -->
   <section class="hero">
     <div class="hero-content">
-      <span class="hero-tagline">Freezer meals for real life</span>
-      <h1>Prep once.<br>Dump it in.<br><em>Eat all week.</em></h1>
+      <span class="hero-tagline">Recipes for real life</span>
+      <h1>Good food.<br>No fuss.<br><em>That's it.</em></h1>
       <p class="hero-description">
-        Simple slow cooker freezer meals you actually want to eat. 
-        No subscriptions, no boxes, no fuss. Just real recipes that 
-        go from freezer bag to dinner table.
+        Simple recipes you actually want to make.
+        No long preambles, no fluff. Just real food
+        from a real kitchen.
       </p>
       <div class="hero-actions">
         <a href="/recipes/" class="btn-primary">
@@ -1104,7 +1124,7 @@
         <div class="step">
           <div class="step-icon">📋</div>
           <h3>Pick a Recipe</h3>
-          <p>Every recipe is tested and designed to work from frozen in a slow cooker.</p>
+          <p>Every recipe is tested and written to be straightforward. No guesswork.</p>
         </div>
         <div class="step">
           <div class="step-icon">🛒</div>
@@ -1112,14 +1132,14 @@
           <p>Import any recipe into Samsung Food. Order from Walmart or Instacart in two taps.</p>
         </div>
         <div class="step">
-          <div class="step-icon">❄️</div>
-          <h3>Bag &amp; Freeze</h3>
-          <p>Toss ingredients in a gallon freezer bag. Lay flat. Good for up to 3 months.</p>
+          <div class="step-icon">🔪</div>
+          <h3>Prep &amp; Cook</h3>
+          <p>Clear ingredients, simple steps. Weeknight dinners or weekend projects.</p>
         </div>
         <div class="step">
-          <div class="step-icon">🍲</div>
-          <h3>Dump &amp; Eat</h3>
-          <p>Drop the bag into your slow cooker. Come back to dinner. Add a side, you're done.</p>
+          <div class="step-icon">🍽️</div>
+          <h3>Eat Well</h3>
+          <p>Real food on the table. No meal kits, no subscriptions, no nonsense.</p>
         </div>
       </div>
     </div>
@@ -1138,7 +1158,7 @@
         <div class="card-image">
           <div class="card-image-placeholder style-green">🍗</div>
           <div class="card-badges">
-            <span class="badge badge-freezer">Freezer</span>
+
             <span class="badge badge-gf">GF</span>
             <span class="badge badge-df">DF</span>
           </div>
@@ -1169,7 +1189,7 @@
         <div class="card-image">
           <div class="card-image-placeholder style-warm">🍤</div>
           <div class="card-badges">
-            <span class="badge badge-freezer">Freezer</span>
+
           </div>
         </div>
         <div class="card-body">
@@ -1198,7 +1218,7 @@
         <div class="card-image">
           <div class="card-image-placeholder style-earth">🥩</div>
           <div class="card-badges">
-            <span class="badge badge-freezer">Freezer</span>
+
           </div>
         </div>
         <div class="card-body">
@@ -1228,11 +1248,10 @@
   <!-- About Teaser -->
   <section class="about-teaser">
     <div class="about-teaser-inner">
-      <h2>We ditched the meal kit.<br><em>Here's what we do instead.</em></h2>
+      <h2>Real recipes from<br><em>a real kitchen.</em></h2>
       <p>
-        Immy's Cafe started when we canceled our Beehive Meals subscription and 
-        realized we could make better food for less money with a freezer, a slow cooker, 
-        and about 30 minutes on a Sunday. Every recipe here is one we actually cook.
+        Immy's Cafe is home cooking, shared. No meal kits, no subscriptions — just
+        the recipes we actually make for our family. If we cook it, it ends up here.
       </p>
       <a href="/about" class="btn-outline">Read Our Story</a>
     </div>
@@ -1242,7 +1261,7 @@
   <section class="cta-strip">
     <div class="cta-strip-inner">
       <h3>New recipes every week.</h3>
-      <p>Follow along as we build out the freezer meal library. No spam, no fluff.</p>
+      <p>Follow along as we add to the collection. No spam, no fluff.</p>
       <a href="/recipes/" class="btn-primary">See What's Cooking →</a>
     </div>
   </section>

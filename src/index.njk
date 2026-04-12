@@ -1,0 +1,130 @@
+---
+layout: base.njk
+pageTitle: "Immy's Cafe — Simple Recipes for Real Life"
+pageDescription: "Simple recipes you actually want to eat. No fuss, no fluff — just real food for real life."
+---
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-content">
+    <span class="hero-tagline">Recipes for real life</span>
+    <h1>Good food.<br>No fuss.<br><em>That's it.</em></h1>
+    <p class="hero-description">
+      Simple recipes you actually want to make.
+      No long preambles, no fluff. Just real food
+      from a real kitchen.
+    </p>
+    <div class="hero-actions">
+      <a href="/recipes/" class="btn-primary">
+        Browse Recipes
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+      </a>
+      <a href="/about" class="btn-ghost">How it works</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-image-frame">
+      <div class="hero-image-placeholder">hero photo here</div>
+    </div>
+    <div class="hero-float-card">
+      <div class="float-label">Avg. Prep Time</div>
+      <div class="float-value">10 minutes</div>
+    </div>
+  </div>
+</section>
+
+<!-- How It Works -->
+<section class="how-it-works">
+  <div class="how-it-works-inner">
+    <h2 class="how-it-works-label">How <span>it works</span></h2>
+    <div class="steps-row">
+      <div class="step">
+        <div class="step-icon">&#x1F4CB;</div>
+        <h3>Pick a Recipe</h3>
+        <p>Every recipe is tested and written to be straightforward. No guesswork.</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">&#x1F6D2;</div>
+        <h3>Shop Instantly</h3>
+        <p>Import any recipe into Samsung Food. Order from Walmart or Instacart in two taps.</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">&#x1F52A;</div>
+        <h3>Prep &amp; Cook</h3>
+        <p>Clear ingredients, simple steps. Weeknight dinners or weekend projects.</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">&#x1F37D;&#xFE0F;</div>
+        <h3>Eat Well</h3>
+        <p>Real food on the table. No meal kits, no subscriptions, no nonsense.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Latest Recipes -->
+<section class="recipes-section">
+  <div class="section-header">
+    <h2 class="section-title">Latest Recipes</h2>
+    <a href="/recipes/" class="section-link">View all &rarr;</a>
+  </div>
+  <div class="recipe-grid">
+
+    {% set cardStyles = ["style-green", "style-warm", "style-earth"] %}
+    {% set cardEmojis = ["&#x1F357;", "&#x1F364;", "&#x1F969;"] %}
+
+    {% for recipe in collections.recipes %}
+    <article class="recipe-card">
+      <div class="card-image">
+        <div class="card-image-placeholder {{ cardStyles[loop.index0 % 3] }}">{{ cardEmojis[loop.index0 % 3] | safe }}</div>
+        <div class="card-badges">
+          {% for badge in recipe.data.badges %}
+          <span class="badge badge-{{ badge | lower }}">{{ badge }}</span>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="card-body">
+        <p class="card-category">{{ recipe.data.category }}</p>
+        <h3 class="card-title"><a href="{{ recipe.url }}">{{ recipe.data.title }}</a></h3>
+        <p class="card-description">{{ recipe.data.description }}</p>
+        <div class="card-meta">
+          <div class="card-meta-item">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            {{ recipe.data.prepTime }} prep
+          </div>
+          <div class="card-meta-item">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048" /></svg>
+            {{ recipe.data.cookTime }}
+          </div>
+          <div class="card-meta-item">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" /></svg>
+            {{ recipe.data.servings }} servings
+          </div>
+        </div>
+      </div>
+    </article>
+    {% endfor %}
+
+  </div>
+</section>
+
+<!-- About Teaser -->
+<section class="about-teaser">
+  <div class="about-teaser-inner">
+    <h2>Real recipes from<br><em>a real kitchen.</em></h2>
+    <p>
+      Immy's Cafe is home cooking, shared. No meal kits, no subscriptions — just
+      the recipes we actually make for our family. If we cook it, it ends up here.
+    </p>
+    <a href="/about" class="btn-outline">Read Our Story</a>
+  </div>
+</section>
+
+<!-- CTA Strip -->
+<section class="cta-strip">
+  <div class="cta-strip-inner">
+    <h3>New recipes every week.</h3>
+    <p>Follow along as we add to the collection. No spam, no fluff.</p>
+    <a href="/recipes/" class="btn-primary">See What's Cooking &rarr;</a>
+  </div>
+</section>
