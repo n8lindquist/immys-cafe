@@ -7,6 +7,8 @@ prepTime: "10 min"
 cookTime: "6 hrs"
 servings: 4
 description: "Tangy salsa verde, shredded chicken thighs, black beans, corn. Serve over rice or build tacos."
+cardImage: "https://images.pexels.com/photos/32538757/pexels-photo-32538757.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+cardImageAlt: "Chicken tacos topped with guacamole, diced tomatoes, and lime"
 pageTitle: "Salsa Verde Chicken — Immy's Cafe"
 pageDescription: "Tangy salsa verde, shredded chicken thighs, black beans, corn. 10 min prep, 6 hours in the slow cooker. Feeds 4."
 keywords: "salsa verde chicken, slow cooker chicken, easy chicken recipe"

@@ -24,7 +24,7 @@ pageDescription: "Simple recipes you actually want to eat. No fuss, no fluff —
   </div>
   <div class="hero-visual">
     <div class="hero-image-frame">
-      <div class="hero-image-placeholder">hero photo here</div>
+      <img src="https://images.pexels.com/photos/30635719/pexels-photo-30635719.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="Prepared meals with rice and vegetables in containers — easy weeknight meal prep" loading="eager">
     </div>
     <div class="hero-float-card">
       <div class="float-label">Avg. Prep Time</div>
@@ -76,7 +76,11 @@ pageDescription: "Simple recipes you actually want to eat. No fuss, no fluff —
     {% for recipe in collections.recipes %}
     <article class="recipe-card">
       <div class="card-image">
+        {% if recipe.data.cardImage %}
+        <img src="{{ recipe.data.cardImage }}" alt="{{ recipe.data.cardImageAlt or recipe.data.title }}" loading="lazy">
+        {% else %}
         <div class="card-image-placeholder {{ cardStyles[loop.index0 % 3] }}">{{ cardEmojis[loop.index0 % 3] | safe }}</div>
+        {% endif %}
         <div class="card-badges">
           {% for badge in recipe.data.badges %}
           <span class="badge badge-{{ badge | lower }}">{{ badge }}</span>

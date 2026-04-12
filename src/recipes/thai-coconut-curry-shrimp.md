@@ -7,6 +7,8 @@ prepTime: "15 min"
 cookTime: "4 hrs"
 servings: 4
 description: "Red curry, coconut milk, bell peppers, bamboo shoots. Add shrimp in the last 20 minutes."
+cardImage: "https://images.pexels.com/photos/17320991/pexels-photo-17320991.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+cardImageAlt: "Vibrant seafood curry with shrimp and aromatic herbs"
 pageTitle: "Thai Coconut Curry Shrimp — Immy's Cafe"
 pageDescription: "Red curry coconut shrimp. 15 min prep, ready in 4 hours. Feeds 4."
 keywords: "thai coconut curry shrimp, slow cooker shrimp, easy curry recipe"

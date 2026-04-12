@@ -7,6 +7,8 @@ prepTime: "15 min"
 cookTime: "5 hrs"
 servings: 4
 description: "Gochujang, coconut aminos, ginger, sesame. Serve over brown rice with cucumber and kimchi."
+cardImage: "https://images.pexels.com/photos/5774005/pexels-photo-5774005.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+cardImageAlt: "Korean bibimbap with marinated beef and fresh vegetables in a rustic bowl"
 pageTitle: "Korean Beef Bowls — Immy's Cafe"
 pageDescription: "Korean-inspired beef bowls with gochujang and sesame. 15 min prep, 5 hours in the slow cooker."
 keywords: "korean beef bowls, slow cooker beef, gochujang beef"
