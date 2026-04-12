@@ -10,12 +10,6 @@ tags: []
   <div class="recipes-page-banner-inner">
     <h1>Recipes</h1>
     <p>{{ collections.recipes | length }} recipes. No preambles, no life stories — just food.</p>
-  </div>
-</div>
-
-<section class="recipes-page">
-  <div class="recipes-page-inner">
-
     <!-- Filters -->
     <div class="filter-bar">
       <div class="filter-group">
@@ -25,10 +19,15 @@ tags: []
         <button class="filter-btn" data-filter="seafood" data-type="category">Seafood</button>
       </div>
       <div class="filter-group">
-        <button class="filter-btn filter-btn--outline" data-filter="gf" data-type="badge">Gluten Free</button>
-        <button class="filter-btn filter-btn--outline" data-filter="df" data-type="badge">Dairy Free</button>
+        <button class="filter-btn filter-btn--outline" data-filter="gf" data-type="badge">GF</button>
+        <button class="filter-btn filter-btn--outline" data-filter="df" data-type="badge">DF</button>
       </div>
     </div>
+  </div>
+</div>
+
+<section class="recipes-page">
+  <div class="recipes-page-inner">
 
     <!-- Recipe Grid -->
     {% set cardStyles = ["style-green", "style-warm", "style-earth"] %}
