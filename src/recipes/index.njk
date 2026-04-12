@@ -36,7 +36,7 @@ tags: []
       {% for recipe in collections.recipes %}
       <article class="recipe-card"
         data-category="{{ recipe.data.category | lower }}"
-        data-badges="{{ recipe.data.badges | join(',') | lower }}">
+        data-badges="{{ recipe.data.badges | default([]) | join(',') | lower }}">
         <div class="card-image">
           {% if recipe.data.cardImage %}
           <img src="{{ recipe.data.cardImage }}" alt="{{ recipe.data.cardImageAlt or recipe.data.title }}" loading="lazy">

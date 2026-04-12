@@ -14,7 +14,7 @@ ogType: article
     "name": "N8 Lindquist"
   },
   "description": "{{ description }}",
-  "image": "https://cafeimmy.com/assets/images/recipes/{{ slug }}.jpg",
+  "image": "{{ cardImage if cardImage else 'https://cafeimmy.com/assets/images/recipes/' + slug + '.jpg' }}",
   "prepTime": "{{ schemaPrepTime | default('PT15M') }}",
   "cookTime": "{{ schemaCookTime | default('PT6H') }}",
   "totalTime": "{{ schemaTotalTime | default('PT6H15M') }}",
