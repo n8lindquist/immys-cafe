@@ -33,35 +33,6 @@ pageDescription: "Simple recipes you actually want to eat. No fuss, no fluff —
   </div>
 </section>
 
-<!-- How It Works -->
-<section class="how-it-works">
-  <div class="how-it-works-inner">
-    <h2 class="how-it-works-label">How <span>it works</span></h2>
-    <div class="steps-row">
-      <div class="step">
-        <div class="step-icon">&#x1F4CB;</div>
-        <h3>Pick a Recipe</h3>
-        <p>Every recipe is tested and written to be straightforward. No guesswork.</p>
-      </div>
-      <div class="step">
-        <div class="step-icon">&#x1F6D2;</div>
-        <h3>Shop Instantly</h3>
-        <p>Import any recipe into Samsung Food. Order from Walmart or Instacart in two taps.</p>
-      </div>
-      <div class="step">
-        <div class="step-icon">&#x1F52A;</div>
-        <h3>Prep &amp; Cook</h3>
-        <p>Clear ingredients, simple steps. Weeknight dinners or weekend projects.</p>
-      </div>
-      <div class="step">
-        <div class="step-icon">&#x1F37D;&#xFE0F;</div>
-        <h3>Eat Well</h3>
-        <p>Real food on the table. No meal kits, no subscriptions, no nonsense.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- Latest Recipes -->
 <section class="recipes-section">
   <div class="section-header">
@@ -89,7 +60,7 @@ pageDescription: "Simple recipes you actually want to eat. No fuss, no fluff —
       </div>
       <div class="card-body">
         <p class="card-category">{{ recipe.data.category }}</p>
-        <h3 class="card-title"><a href="{{ recipe.url }}">{{ recipe.data.title }}</a></h3>
+        <h3 class="card-title"><a href="{{ recipe.url }}" class="card-link">{{ recipe.data.title }}</a></h3>
         <p class="card-description">{{ recipe.data.description }}</p>
         <div class="card-meta">
           <div class="card-meta-item">

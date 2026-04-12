@@ -596,6 +596,174 @@ nav a:hover::after { width: 100%; }
   color: var(--sage);
 }
 
+/* ---- Stretched card link ---- */
+.recipe-card { position: relative; }
+
+.card-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-xl);
+}
+
+/* ---- Recipes Page ---- */
+.recipes-page {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-2xl) var(--space-xl) var(--space-3xl);
+}
+
+.recipes-page-inner {}
+
+.recipes-page-header {
+  margin-bottom: var(--space-xl);
+}
+
+.recipes-page-header h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  font-weight: 600;
+  color: var(--charcoal);
+  margin-bottom: 4px;
+}
+
+.recipes-page-header p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+/* ---- Filter Bar ---- */
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-xl);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.filter-group {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1.5px solid var(--border);
+  background: transparent;
+  color: var(--warm-gray);
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+  border-color: var(--sage);
+  color: var(--sage-dark);
+}
+
+.filter-btn.is-active {
+  background: var(--sage-dark);
+  border-color: var(--sage-dark);
+  color: var(--warm-white);
+}
+
+.filter-btn--outline {
+  border-style: dashed;
+}
+
+.filter-btn--outline.is-active {
+  background: var(--sage-pale);
+  border-color: var(--sage-dark);
+  border-style: solid;
+  color: var(--sage-deep);
+}
+
+.no-results {
+  display: none;
+  text-align: center;
+  padding: var(--space-3xl) 0;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+/* ---- About Page ---- */
+.about-page {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: var(--space-2xl) var(--space-xl) var(--space-3xl);
+}
+
+.about-hero {
+  margin-bottom: var(--space-2xl);
+  padding-bottom: var(--space-2xl);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.about-tagline {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--sage-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  margin-bottom: var(--space-lg);
+  padding: 5px 14px;
+  background: var(--sage-pale);
+  border-radius: 20px;
+}
+
+.about-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4.5vw, 3rem);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--charcoal);
+  margin-bottom: var(--space-lg);
+}
+
+.about-hero h1 em {
+  font-style: italic;
+  color: var(--sage-dark);
+}
+
+.about-intro {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+.about-section {
+  margin-bottom: var(--space-2xl);
+}
+
+.about-section h2 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--charcoal);
+  margin-bottom: var(--space-md);
+}
+
+.about-section p {
+  font-size: 0.97rem;
+  color: var(--charcoal-soft);
+  line-height: 1.8;
+  margin-bottom: var(--space-md);
+}
+
+.about-section p:last-child { margin-bottom: 0; }
+
+.about-cta {
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--border-light);
+}
+
 /* ---- About Teaser ---- */
 .about-teaser {
   background: var(--sage-pale);

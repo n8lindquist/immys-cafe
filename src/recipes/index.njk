@@ -1,0 +1,133 @@
+---
+layout: base.njk
+pageTitle: "Recipes — Immy's Cafe"
+pageDescription: "Browse all recipes. Filter by protein or dietary preference."
+permalink: /recipes/
+tags: []
+---
+
+<section class="recipes-page">
+  <div class="recipes-page-inner">
+
+    <div class="recipes-page-header">
+      <h1>Recipes</h1>
+      <p>{{ collections.recipes | length }} recipes and counting.</p>
+    </div>
+
+    <!-- Filters -->
+    <div class="filter-bar">
+      <div class="filter-group">
+        <button class="filter-btn is-active" data-filter="all" data-type="category">All</button>
+        <button class="filter-btn" data-filter="chicken" data-type="category">Chicken</button>
+        <button class="filter-btn" data-filter="beef" data-type="category">Beef</button>
+        <button class="filter-btn" data-filter="seafood" data-type="category">Seafood</button>
+      </div>
+      <div class="filter-group">
+        <button class="filter-btn filter-btn--outline" data-filter="gf" data-type="badge">GF</button>
+        <button class="filter-btn filter-btn--outline" data-filter="df" data-type="badge">DF</button>
+      </div>
+    </div>
+
+    <!-- Recipe Grid -->
+    {% set cardStyles = ["style-green", "style-warm", "style-earth"] %}
+    {% set cardEmojis = ["&#x1F357;", "&#x1F364;", "&#x1F969;"] %}
+
+    <div class="recipe-grid" id="recipe-grid">
+      {% for recipe in collections.recipes %}
+      <article class="recipe-card"
+        data-category="{{ recipe.data.category | lower }}"
+        data-badges="{{ recipe.data.badges | join(',') | lower }}">
+        <div class="card-image">
+          {% if recipe.data.cardImage %}
+          <img src="{{ recipe.data.cardImage }}" alt="{{ recipe.data.cardImageAlt or recipe.data.title }}" loading="lazy">
+          {% else %}
+          <div class="card-image-placeholder {{ cardStyles[loop.index0 % 3] }}">{{ cardEmojis[loop.index0 % 3] | safe }}</div>
+          {% endif %}
+          <div class="card-badges">
+            {% for badge in recipe.data.badges %}
+            <span class="badge badge-{{ badge | lower }}">{{ badge }}</span>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-category">{{ recipe.data.category }}</p>
+          <h3 class="card-title"><a href="{{ recipe.url }}" class="card-link">{{ recipe.data.title }}</a></h3>
+          <p class="card-description">{{ recipe.data.description }}</p>
+          <div class="card-meta">
+            <div class="card-meta-item">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              {{ recipe.data.prepTime }} prep
+            </div>
+            <div class="card-meta-item">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048" /></svg>
+              {{ recipe.data.cookTime }}
+            </div>
+            <div class="card-meta-item">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" /></svg>
+              {{ recipe.data.servings }} servings
+            </div>
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+
+    <p class="no-results" id="no-results">No recipes match those filters yet.</p>
+
+  </div>
+</section>
+
+<script>
+(function() {
+  var activeCategory = 'all';
+  var activeBadges = [];
+
+  var categoryBtns = document.querySelectorAll('[data-type="category"]');
+  var badgeBtns = document.querySelectorAll('[data-type="badge"]');
+  var cards = document.querySelectorAll('#recipe-grid .recipe-card');
+  var noResults = document.getElementById('no-results');
+
+  function applyFilters() {
+    var visible = 0;
+    cards.forEach(function(card) {
+      var cat = card.dataset.category;
+      var badges = card.dataset.badges ? card.dataset.badges.split(',') : [];
+
+      var catMatch = activeCategory === 'all' || cat === activeCategory;
+      var badgeMatch = activeBadges.every(function(b) { return badges.indexOf(b) > -1; });
+
+      if (catMatch && badgeMatch) {
+        card.style.display = '';
+        visible++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+    noResults.style.display = visible === 0 ? 'block' : 'none';
+  }
+
+  categoryBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      categoryBtns.forEach(function(b) { b.classList.remove('is-active'); });
+      btn.classList.add('is-active');
+      activeCategory = btn.dataset.filter;
+      applyFilters();
+    });
+  });
+
+  badgeBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var f = btn.dataset.filter;
+      var idx = activeBadges.indexOf(f);
+      if (idx > -1) {
+        activeBadges.splice(idx, 1);
+        btn.classList.remove('is-active');
+      } else {
+        activeBadges.push(f);
+        btn.classList.add('is-active');
+      }
+      applyFilters();
+    });
+  });
+})();
+</script>
